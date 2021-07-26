@@ -13,7 +13,7 @@ const saveBookHandler = (request, h) => {
         return response;
     }
 
-    if (pageCount > readPage) {
+    if (pageCount < readPage) {
         const response = h.response({
             status: 'fail',
             message: 'Gagal menambahkan buku. readpage tidak boleh lebih besar dari pageCount',

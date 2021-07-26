@@ -69,6 +69,28 @@ const saveBookHandler = (request, h) => {
 
 
 const getAllBooksHandler = (request, h) => {
+    const { name, reading, finished } = request.query;
+
+  let containerBooks = books;
+
+  if (name !== undefined) {
+
+    containerBooks = containerBooks.filter((book) => book.name.toLowerCase().includes(name.toLowerCase()));
+
+  }
+
+  if (reading !== undefined) {
+
+    containerBooks = containerBooks.filter((book) => book.reading == reading);
+
+  }
+
+  if (finished !== undefined) {
+
+    containerBooks = containerBooks.filter((book) => book.finished == finished);
+
+  }
+    
     const response = h.response({
             status: 'success',
             data: {
